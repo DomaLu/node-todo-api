@@ -1,4 +1,17 @@
-const MongoClient = require('mongodb').MongoClient
+// const MongoClient = require('mongodb').MongoClient
+const { MongoClient, ObjectID } = require('mongodb')
+
+// var obj = new ObjectID()
+// console.log(obj)
+
+// var user = {
+// 	name: 'Darren',
+// 	age: 18
+// }
+//
+// var { name } = user
+//
+// console.log(name)
 
 MongoClient.connect('mongodb://localhost:27017/todoApp', (err, db) => {
 	if (err) {
@@ -19,17 +32,17 @@ MongoClient.connect('mongodb://localhost:27017/todoApp', (err, db) => {
 	// })
 
 	//Insert new doc into Users (name, age, location)
-	db.collection('Users').insertOne({
-		name: 'Darren',
-		age: 18,
-		location: 'Taipei'
-	}, (err, result) => {
-		if (err) {
-			return console.log('Unable to insert user', err)
-		}
-
-		console.log(JSON.stringify(result.ops, 2))
-	})
+	// db.collection('Users').insertOne({
+	// 	name: 'Dophin',
+	// 	age: 19,
+	// 	location: 'Japan'
+	// }, (err, result) => {
+	// 	if (err) {
+	// 		return console.log('Unable to insert user', err)
+	// 	}
+	//
+	// 	console.log(result.ops[0]._id.getTimestamp())
+	// })
 
 	db.close()
 })
