@@ -7,40 +7,69 @@ mongoose.connect('mongodb://localhost:27017/todoApp')
 
 var Todo = mongoose.model('Todo', {
 	text: {
-		type: String
+		type: String,
+		required: true,
+		minlength: 1,
+		trim: true
 	},
 	completed: {
-		type: Boolean
+		type: Boolean,
+		default: false
 	},
 	completedAt: {
-		type: Number
+		type: Number,
+		default: null
 	}
 })
 
-var newTodo = new Todo({
-	text: 'Cook dinner'
-})
+// var newTodo = new Todo({
+// 	text: 'test'
+// })
+//
+// newTodo.save().then(
+// 	doc => {
+// 		console.log('Saved todo')
+// 		console.dir(doc._doc)
+// 	},
+// 	err => {
+// 		console.log('Unable to save todo', err)
+// 	}
+// )
 
-newTodo.save().then(
-	doc => {
-		console.log('Saved todo', doc)
-	},
-	err => {
-		console.log('Unable to save todo', err)
+// var otherTodo = new Todo({
+// 	text: 'Feed the cat',
+// 	completed: true,
+// 	completedAt: Date.now()
+// })
+//
+// otherTodo.save().then(
+// 	doc => {
+// 		console.log(JSON.stringify(doc, undefined, 2))
+// 	},
+// 	err => {
+// 		console.log('Unable to save todo', err)
+// 	}
+// )
+
+var User = mongoose.model('User', {
+	email: {
+		type: String,
+		required: true,
+		minlength: 1,
+		trim: true
 	}
-)
-
-var otherTodo = new Todo({
-	text: 'Feed the cat',
-	completed: true,
-	completedAt: Date.now()
 })
 
-otherTodo.save().then(
-	doc => {
-		console.log(JSON.stringify(doc, undefined, 2))
+var newUser = new User({
+	email: 'abc456@example.com'
+})
+
+newUser.save().then(
+	res => {
+		console.log('Saved user')
+		console.dir(res._doc)
 	},
 	err => {
-		console.log('Unable to save todo', err)
+		console.log('Unable to save user', err)
 	}
 )
