@@ -147,7 +147,6 @@ describe('PATCH /todos/:id', () => {
 			.send(body)
 			.expect(200)
 			.expect(res => {
-				console.log(res.body.todo)
 				expect(res.body.todo._id).toBe(hexId)
 			})
 			.end((err, res) => {
