@@ -100,7 +100,7 @@ app.patch('/todos/:id', (req, res) => {
 		.catch(err => res.status(400).send('patch error'))
 })
 
-app.get('/', (req, res) => res.send('Hello Doma'))
+app.get('/', (req, res) => res.send('Hello Ed'))
 
 app.listen(port, () => {
 	console.log(`Started up port ${port}`)
